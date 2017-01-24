@@ -1,0 +1,32 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Document
+    link(rel='stylesheet', href='dist/css/style.css')
+    link(rel="stylesheet", href="vendor/jquery.bxslider/jquery.bxslider.css")
+  body
+    .container
+      ul.pjslider.bxslider
+        li(data-photo="src/img/photo1.jpg")
+        li(data-photo="src/img/photo2.jpg")
+        li(data-photo="src/img/photo3.jpg")
+        li(data-photo="src/img/photo4.jpg")
+
+
+
+      //- #view-slide
+      //-   .slide
+      //-     i.slideButton.slideButtonLeft <
+      //-     i.slideButton.slideButtonRight >
+      //-     .banner#slideItem(data-component='slideItem')
+      //-         //- a(href='www.google.com/?q=1', target='_blank')     
+      //-     .caption
+      //-       ul#slideCaption(data-component='slideCaption')
+      //-           //- li Lorem ipsum dolor sit amet
+      //-     .slideNav
+      //-       ul#slideNav(data-component='slideNav')
+      //-           //- li(data-navitem='0')
+      //-           //-     .slideNavItem
+    script(src='dist/vendor/jquery-3.1.1.js')
+    script(src="src/js/pjslider.js")
