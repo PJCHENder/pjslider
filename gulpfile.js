@@ -15,6 +15,8 @@ gulp.task('serve', ['sass','jade'], function() {
 gulp.task('watch', function(){
 	gulp.watch("*.jade", ['jade']);
     gulp.watch("src/css/*.sass", ['sass']);
+    gulp.watch("src/js/*.js").on('change', browserSync.reload);
+  
     // gulp.watch("*.html").on('change', browserSync.reload);
 })
 

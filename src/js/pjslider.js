@@ -1,6 +1,14 @@
 ;(function($){
 
-let pjslider = function()
+$.prototype = function pjSlider(){
+    console.log('test');
+}
 
+console.log($);
 
-}(jQuery))
+}(jQuery));
+
+$(document).ready(function(){
+    $('.container').pjSlider;
+    // console.log('hello');
+})
