@@ -48,6 +48,7 @@
          */
 
         let init = function() {
+            let pjSliderItem = el.find('li');
             //  merge user-supplied options with the defaults
             slider.settings = $.extend({}, defaults, options);
             //  parse slideWidth setting
@@ -57,24 +58,89 @@
             //   set initial number
             slider.settings.currentNumber = 0;
             //  set total number of slides
-            slider.settings.sliderNumber = el.find('li').length;
+            slider.settings.sliderNumber = pjSliderItem.length;
             //  remove arrow control if only one slide
             slider.settings.showArrow = (slider.settings.sliderNumber === 1) ? false : true;
+            //  getting data-attribute value
+            slider.settings.data = [];
+            pjSliderItem.map(function() {
+                return slider.settings.data.push({
+                    photoSrc: $(this).data('photo'),
+                    title: $(this).data('title'),
+                    linkSrc: $(this).data('link')
+                });
+            })
+
 
             //  perform all DOM / CSS modifications
             setup();
-            //console.log(slider);
+
+            // console.log(slider.settings.data);
         }
 
         /**
          * Performs all DOM and CSS modifications
          */
+        let setup = function() {
+            //**  Default DOM Settings
+            el.wrap(`
+                <div id= '${slider.settings.wrapperId}'>
+                    <div class='slide'>
+                        <div class='banner'>
+                        </div>
+                    </div>
+                </div>`);
+            el.closest('.slide').prepend(`
+                <span class='slideButton slideButtonLeft'>〈</span>
+                <span class='slideButton slideButtonRight'>〉</span>`);
+            el.closest('.banner').after(`
+                <div class='caption'>
+                    <ul class='slideCaption'>
+                    </ul>
+                </div>
+                <div class='nav'>
+                    <ul class='slideNav'>
+                    </ul>
+                </div>`);
 
-         let setup = function(){
-            //  wrap el in wrapper
-            
 
-         }
+            //** Dom Modifiction
+            //  reset el dom
+            el.html('');
+            //  get jQuery Object of wrapper ID 
+            let wrapperId = $(`#${slider.settings.wrapperId}`);
+            slider.settings.data.forEach(function(item, index) {
+                el.append(`
+                    <li>
+                        <a href='${item.linkSrc}' target='_blank'>
+                            <div class='slideItem item${index}'></div>
+                        </a>
+                    </li>`);
+                wrapperId.find('.caption').append(`
+                    <li>${item.title}</li>
+                `);
+                wrapperId.find('.slideNav').append(`
+                    <li data-navitem='${index}'>
+                        <div class='slideNavItem'></div>
+                    </li>
+                `);
+            })
+
+            //** CSS Modification
+            let wrapperCSS = {
+                'max-width': slider.settings.slideWidth + 'px',
+                'height': slider.settings.slideHeight + 'px'
+            }
+            wrapperId.css(wrapperCSS);
+
+            // init Nav CSS
+            wrapperId.find('.slideNav').find('li').first().addClass('active');
+
+            let 
+
+
+
+        }
 
         init();
     }
@@ -87,7 +153,7 @@
 
 
 $(document).ready(function() {
-    $('.container').pjSlider({
+    $('.pjSlider').pjSlider({
         autoSlide: false
     });
     // console.log('hello');
