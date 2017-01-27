@@ -1,0 +1,108 @@
+.container
+    max-width: 980px
+    margin: 0 auto
+#pj-wrapper
+    border: 6px solid #BABABA
+    margin: 0 auto
+    .slide
+        width: 100%
+        height: 100%
+        position: relative
+        overflow: hidden
+        background: #DADADA url('https://fakeimg.pl/980x390/DADADA/?text=NoSlide') no-repeat center center
+    .slideProload
+        background: #DADADA url('https://fakeimg.pl/980x390/DADADA/?text=NoSlide') no-repeat center center
+    .slideButton
+        position: absolute
+        top: 50%
+        font-size: 36px
+        cursor: pointer
+        padding: 10px
+        color: #CACACA
+        transform: translateY(-50%)
+        z-index: 999
+        &:hover
+            color: #EEE
+        &.slideButtonRight
+            right: 0
+        &.slideButtonLeft
+            left: 0
+    .banner
+        box-sizing: border-box
+        position: relative
+        .pjSlider
+            list-style: none
+            margin: 0
+            padding: 0
+            li
+                float: left
+            .slideItem
+                width: 100%
+                height: 100%
+                background-repeat: no-repeat
+                background-size: cover
+                background-position: center center
+    .caption
+        box-sizing: border-box
+        ul.slideCaption
+            list-style: none
+            position: absolute
+            margin: 0
+            padding: 0
+            li
+                float: left
+                padding: 10px 10px 10px 20px
+                font-size: 20px
+                color: #DDD
+                box-sizing: border-box
+    .nav
+        position: absolute
+        right: 50%
+        transform: translateX(50%)
+        bottom: 10px
+        ul.slideNav
+            list-style: none
+            margin: 0
+            padding: 10px 10px
+            li
+                display: inline-block
+                color: #DDD
+                padding-top: 10px
+                padding-bottom: 10px
+                cursor: pointer
+        .slideNavItem
+            // background-color: rgba(128,128,128,0.2)
+            background-color: rgba(255,255,255,0.2)
+            height: 2px
+            width: 50px
+            margin-left: 2px
+            margin-right: 2px
+        .active .slideNavItem
+            // background-color: rgba(128,128,128,0.8)
+            background-color: rgba(255,255,255,0.8)
+
+
+// Slide Mode
+
+#pj-wrapper
+    .modeCaptionBottom 
+        ul.slideCaption
+            bottom: 40px
+            li
+                padding: 10px 10px 10px 20px
+
+//  Center Mode
+#pj-wrapper
+    .modeCaptionCenter
+        ul.slideCaption
+            bottom: 50%
+            transform: translateY(50%)
+            li
+                text-align: center
+                font-size: 72px
+                color: #FFF
+                text-shadow: 0px 0px 8px #333
+
+                
+        
+            
